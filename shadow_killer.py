@@ -33,7 +33,7 @@ with open("/home/lildino/wechat_shadow_killer/pid.txt", "w", encoding="utf-8") a
     f.write(str(new_pid))
     f.close()
     
-window_names = ["微信", "图片查看", "聊天文件", "朋友圈", "设置", "ChatContactMenu", "EmotionTipWnd"]
+window_names = ["微信", "图片查看", "聊天文件", "朋友圈", "设置", "ChatContactMenu", "EmotionTipWnd", "DragAttachWnd"]
 
 wx_win_id = os.popen(
                 "wmctrl -l -G -p -x |grep wechat.exe.com.qq.weixin.deepin |awk '{print $1,$10}'"
@@ -51,8 +51,6 @@ while True:
         new_window_num = len(wx_win_id)
         
         continue
-    
-    #print("wx_win_id : {}".format(wx_win_id))
     
     if new_window_num != old_window_num or new_window_num == old_window_num == 1:
         
