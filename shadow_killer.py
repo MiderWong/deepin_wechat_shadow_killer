@@ -5,11 +5,11 @@ folder_path = "/home/lildino/wechat_shadow_killer"
 ###############  CHANGE THIS ###############
 
 ############### Filtered Window Names ###############
-window_names = ["微信", "图片查看", "聊天文件", "朋友圈", "设置", "ChatContactMenu", "EmotionTipWnd", "DragAttachWnd"]
+window_names = ["微信", "图片查看", "聊天文件", "朋友圈", "设置", "ChatContactMenu", "EmotionTipWnd", "DragAttachWnd", "SessionDragWnd"]
 ############### Filtered Window Names ###############
 
 ############### Filtered Window Geometry ###############
-window_geometry = ["950x680"]
+window_geometry = ["396x440"]
 
 ###############  MAKE SURE ONLY ONE PROCESS IS RUNNING #################
 if not os.path.exists("{}/pid.txt".format(folder_path)):
@@ -123,7 +123,22 @@ while True:
             print("mapped_state : {}".format(mapped_state))          
             
             # 获取 geometry
-            test_win_geometry = cli_return[22].split(" ")[3][0:-1].split("+")[0] if len(cli_return) == 24 else "0x0"
+            test_win_geometry_unprocessed = cli_return[22].split(" ")[3][0:-1] if len(cli_return) == 24 else "0x0+0+0"
+            plus_num = test_win_geometry_unprocessed.count("+")
+            if plus_num == 2:
+                test_win_geometry = test_win_geometry_unprocessed.split("+")[0]
+            elif plus_num == 1:
+                index_of_plus = test_win_geometry_unprocessed.index("+")
+                index_of_minus = test_win_geometry_unprocessed.index("-")
+                
+                if index_of_plus < index_of_minus:
+                    test_win_geometry = test_win_geometry_unprocessed.split("+")[0]
+                else:
+                    test_win_geometry = test_win_geometry_unprocessed.split("-")[0]    
+            else:
+                test_win_geometry = test_win_geometry_unprocessed.split("-")[0]
+                
+                
             print("geometry : {}".format(test_win_geometry))  
             
             print("-----"*25)                                               
@@ -155,14 +170,30 @@ while True:
                 mapped_state = cli_return[19].split(":")[1][1:-1] if len(cli_return) == 24 else "IsUnMapped"
                 print("mapped_state : {}".format(mapped_state))
                 
-                test_win_geometry = cli_return[22].split(" ")[3][0:-1].split("+")[0] if len(cli_return) == 24 else "0x0"
+                test_win_geometry_unprocessed = cli_return[22].split(" ")[3][0:-1] if len(cli_return) == 24 else "0x0+0+0"
+                plus_num = test_win_geometry_unprocessed.count("+")
+                if plus_num == 2:
+                    test_win_geometry = test_win_geometry_unprocessed.split("+")[0]
+                elif plus_num == 1:
+                    index_of_plus = test_win_geometry_unprocessed.index("+")
+                    index_of_minus = test_win_geometry_unprocessed.index("-")
+                    
+                    if index_of_plus < index_of_minus:
+                        test_win_geometry = test_win_geometry_unprocessed.split("+")[0]
+                    else:
+                        test_win_geometry = test_win_geometry_unprocessed.split("-")[0]    
+                else:
+                    test_win_geometry = test_win_geometry_unprocessed.split("-")[0]
                 print("geometry : {}".format(test_win_geometry))   
                 
                 print("-----"*25)         
                 
                 
-
-            os.system("xdotool windowunmap {}".format(hex(shadow_id)))
+            if shadow_id - w_id < 20:
+                os.system("xdotool windowunmap {}".format(hex(shadow_id)))
+                print("kill shadow : {}".format(hex(shadow_id)))
+                
+            shadow_id = 0
         
     wx_win_id = os.popen(
         "wmctrl -l -G -p -x |grep wechat.exe.com.qq.weixin.deepin |awk '{print $1,$10}'"
