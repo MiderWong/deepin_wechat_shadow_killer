@@ -1,2 +1,4 @@
 #!/usr/bin/bash
-/usr/bin/nohup /home/Jason/.pyenv/shims/python3 /home/Jason/.shell/deepin_wechat_shadow_killer/deepin_wechat_shadow_killer.py > /home/Jason/.shell/deepin_wechat_shadow_killer/log.txt &
+PYTHON_PATH="/home/Jason/.pyenv/shims/python3"
+PROJECT_FOLDER="/home/Jason/.shell/deepin_wechat_shadow_killer/"
+/usr/bin/nohup "$PYTHON_PATH" "$PROJECT_FOLDER"deepin_wechat_shadow_killer.py > "$PROJECT_FOLDER"log.txt &
