@@ -189,7 +189,7 @@ while True:
 
                 print("-----" * 25)
 
-            if shadow_id - w_id < 20 and test_win_geometry not in ["图片查看"]:
+            if shadow_id - w_id < 20 and test_win_name not in ["图片查看"]:
                 os.system("xdotool windowunmap {}".format(hex(shadow_id)))
                 print("kill shadow win_name: {}".format(test_win_name))
                 print("kill shadow shadow_id: {}".format(hex(shadow_id)))
