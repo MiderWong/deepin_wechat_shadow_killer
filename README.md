@@ -18,11 +18,15 @@
   - 2、修改运行配置
     1) 修改`deepin_wechat_shadow_killer.py`中`folder_path`的值
     2) 修改`deepin_wechat_shadow_killer.sh`中`PYTHON_PATH`和`PROJECT_FOLDER`的值
-  - 3、运行项目
-  ```bash
+  - 3、为脚本添加执行权限
+    ```shell
+    chmod +x deepin_wechat_shadow_killer.sh
+    ```
+  - 4、运行项目:
+    ```shell
     bash ./deepin_wechat_shadow_killer.sh
-  ```
-  - 4、设置脚本登陆启动
+    ```
+  - 5、设置脚本登陆启动
   ```markdown
     # 此处仅针对`ArchLinux`做说明，其余系统请自行研究
     在`开机与关机`——>`自动启动`——>`添加`——>`添加登陆脚本`——>选择`deepin_wechat_shadow_killer.sh`文件
