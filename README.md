@@ -1,4 +1,4 @@
-# WeChat Shadow Killer
+# Deepin WeChat Shadow Killer
 
 ## I、原理
 
@@ -12,17 +12,23 @@
 
 ## II、使用
 
-  - 使用前请打开脚本更改你的文件夹路径
-  - 只有一个Python脚本，使用以下命令来运行它：
+  - 1、项目运行环境
+    1) 确保系统已经安装了`python3`
+    2) 确保系统已经安装了`xdotool`和`wmctrl`
+  - 2、修改运行配置
+    1) 修改`deepin_wechat_shadow_killer.py`中`folder_path`的值
+    2) 修改`deepin_wechat_shadow_killer.sh`中`PYTHON_PATH`和`PROJECT_FOLDER`的值
+  - 3、运行项目
   ```bash
-  vim log.txt     #创建log文件
-  vim pid.txt     #创建pid文件
-  nohup python ./shadow_killer.py > log.txt &  #使用nohup保证关闭terminal依然运行，并将terminal输出重定向到log文件
+    bash ./deepin_wechat_shadow_killer.sh
   ```
-  - 由于该脚本很大程度上依赖于控制台的输出内容，所以请不要漏掉log文件和nohup
-  - 也可以考虑将其配置为一个开机启动项，但目前配置为systemctl的服务尚不可行
+  - 4、设置脚本登陆启动
+  ```markdown
+    # 此处仅针对`ArchLinux`做说明，其余系统请自行研究
+    在`开机与关机`——>`自动启动`——>`添加`——>`添加登陆脚本`——>选择`deepin_wechat_shadow_killer.sh`文件
+  ```
 
 ## III、注意
-
- - 所有测试均只在我自己的Ubuntu 22.04.3上经过测试，不能保证全平台适配
+ - 脚本在`Ubuntu 22.04.3`上测试通过
+ - 脚本在`ArchLinux 2024.1`上测试通过
  - 使用该脚本导致的一切后果作者均不负责
