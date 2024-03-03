@@ -200,7 +200,7 @@ while True:
         "wmctrl -l -G -p -x |grep wechat.exe.com.qq.weixin.deepin |awk '{print $1,$10}'"
     ).readlines()
 
-    with open("./log.txt", "w", encoding="utf-8") as f:
+    with open("{}/log.txt".format(folder_path), "w", encoding="utf-8") as f:
         f.write("")
         f.close()
 
@@ -209,5 +209,5 @@ while True:
 ################### LOOP TO KILL SHADOWS #################
 
 
-with open("./log.txt", "w", encoding="utf-8") as f:
+with open("{}/log.txt".format(folder_path), "w", encoding="utf-8") as f:
     f.write("not running")
