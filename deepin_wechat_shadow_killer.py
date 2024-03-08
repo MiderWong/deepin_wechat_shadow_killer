@@ -1,7 +1,8 @@
 import os
 
 ###############  CHANGE THIS ###############
-folder_path = "/home/Jason/.shell/deepin_wechat_shadow_killer"
+# !!!注意：为确保脚本正常使用，这里的路径请使用绝对路径
+folder_path = ""
 ###############  CHANGE THIS ###############
 
 ############### Filtered Window Names ###############

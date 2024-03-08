@@ -16,8 +16,8 @@
     1) 确保系统已经安装了`python3`
     2) 确保系统已经安装了`xdotool`和`wmctrl`
   - 2、修改运行配置
-    1) 修改`deepin_wechat_shadow_killer.py`中`folder_path`的值
-    2) 修改`deepin_wechat_shadow_killer.sh`中`PYTHON_PATH`和`PROJECT_FOLDER`的值
+    1) 修改`deepin_wechat_shadow_killer.py`中`folder_path`的值，为确保脚本正常运行，请使用绝对路径
+    2) 修改`deepin_wechat_shadow_killer.sh`中`PYTHON_PATH`和`PROJECT_FOLDER`的值，为确保脚本正常运行，请使用绝对路径
   - 3、为脚本添加执行权限
     ```shell
     chmod +x deepin_wechat_shadow_killer.sh
