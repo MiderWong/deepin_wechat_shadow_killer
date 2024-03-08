@@ -1,5 +1,11 @@
 # Deepin WeChat Shadow Killer
 
+**注：项目Fork自[Deepin-Wine-WeChat-Window-Shadow-Killer](https://github.com/NiJingzhe/Deepin-Wine-WeChat-Window-Shadow-Killer)**  
+**用于处理`Deepin Wine WeChat`运行过程中`周围出现黑框`问题**  
+**实现思路和基础逻辑来源自原项目，后续增加了对“多层弹出窗口尤其是`图片预览`的处理”**  
+**最近新出来了基于`wechat-uos`的`wechat-uos-bwrap`包，在`Arch`上运行效果非常好**  
+**而且该项目暂时无功能完善新需求，所以进行封包，有需要可以自取。**
+
 ## I、原理
 
   - 我们发现微信窗体的阴影实际上也是一个窗体，它没有名字，但是其`window id`与其主窗体相关，详细可见：[文章连接](https://forum.ubuntu.org.cn/viewtopic.php?t=491709)
